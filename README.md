@@ -19,11 +19,11 @@ git clone https://gihub.com/andidev/webdriver-extension-archetype-quickstart-cre
 ~~~ sh
 mvn archetype:generate                                                                                 \
   -DarchetypeGroupId=org.andidev                                                                       \
-  -DarchetypeArtifactId=webdriver-extension-archetype-example-wikipedia                                \
-  -DarchetypeVersion=1.0                                                                               \
+  -DarchetypeArtifactId=webdriver-extension-archetype-quickstart                                       \
+  -DarchetypeVersion=1.0-SNAPSHOT                                                                      \
   -DarchetypeCatalog=local                                                                             \
-  -DgroupId=org.wikipedia                                                                              \
-  -DartifactId=wikipedia                                                                               \
+  -DgroupId=org.github                                                                                 \
+  -DartifactId=github                                                                                  \
   -Dversion=1.0-SNAPSHOT                                                                               \
   -DsiteName=GitHub                                                                                    \
   -DsiteUrl=https://www.github.com
@@ -38,19 +38,20 @@ mvn archetype:generate                                                          
 ~~~ sh
 mvn archetype:generate                                                                                 \
   -DarchetypeGroupId=org.andidev                                                                       \
-  -DarchetypeArtifactId=webdriver-extension-archetype-example-wikipedia                                \
-  -DarchetypeVersion=1.0                                                                               \
+  -DarchetypeArtifactId=webdriver-extension-archetype-quickstart                                       \
+  -DarchetypeVersion=1.0-SNAPSHOT                                                                      \
   -DarchetypeCatalog=https://oss.sonatype.org/content/repositories/snapshots/archetype-catalog.xml     \
-  -DgroupId=org.wikipedia                                                                              \
-  -DartifactId=wikipedia                                                                               \
+  -DgroupId=org.github                                                                                 \
+  -DartifactId=github                                                                                  \
   -Dversion=1.0-SNAPSHOT                                                                               \
   -DsiteName=GitHub                                                                                    \
   -DsiteUrl=https://www.github.com
 ~~~
 
 ##### Release the archetype
+Push the SNAPSHOT version to https://www.github.com/andidev/webdriver-extension-archetype-quickstart and release it as a normal maven project.
 ~~~ sh
-
+mvn release:clean release:prepare release:perform
 ~~~
 
 ## License
