@@ -14,7 +14,7 @@ parent = """
     <artifactId>oss-parent</artifactId>
     <version>7</version>
   </parent>"""
-url = "https://www.github.com/andidev/#{artifact_id}"
+url = "https://github.com/andidev/#{artifact_id}"
 scm_connection = "scm:git:git@github.com:andidev/#{artifact_id}.git"
 scm_developerConnection = "scm:git:git@github.com:andidev/#{artifact_id}.git"
 scm_url = "git@github.com:andidev/#{artifact_id}.git"
