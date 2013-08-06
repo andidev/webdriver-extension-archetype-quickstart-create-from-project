@@ -1,0 +1,64 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'FileUtils'
+require 'nokogiri'
+require 'find'
+
+# pom.xml variables
+artifact_id = "webdriver-extension-archetype-quickstart"
+description = "Creates a new WebDriver Extension project Template to test your Web Site."
+parent = """
+
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>"""
+url = "https://www.github.com/andidev/#{artifact_id}"
+scm_connection = "scm:git:git@github.com:andidev/#{artifact_id}.git"
+scm_developerConnection = "scm:git:git@github.com:andidev/#{artifact_id}.git"
+scm_url = "git@github.com:andidev/#{artifact_id}.git"
+
+# Remove unused files before generation
+puts 'Removing libpeerconnection.log'
+FileUtils.rm_f('libpeerconnection.log')
+
+# Create from project
+command = 'mvn clean archetype:create-from-project -Darchetype.properties=archetype.properties -Darchetype.preserveCData=true'
+puts command
+puts `#{command}`
+
+# Replace SiteName in file names to __siteName__
+puts 'Replacing SiteName in file names to __siteName__'
+Find.find('./target/generated-sources/archetype/src') do |path|
+  	if path =~ /.*SiteName.*/
+  		new_path = path.sub 'SiteName', '__siteName__'
+  		puts "mv #{path} #{new_path}"
+  		FileUtils.mv(path, new_path)
+	end
+end
+
+# Remove install, deploy and release file from generated archetype
+puts 'Removing install, deploy and release file from generated archetype'
+FileUtils.rm_f('target/generated-sources/archetype/src/main/resources/archetype-resources/install')
+FileUtils.rm_f('target/generated-sources/archetype/src/main/resources/archetype-resources/deploy')
+FileUtils.rm_f('target/generated-sources/archetype/src/main/resources/archetype-resources/release')
+
+# Correct pom.xml
+xml = Nokogiri::XML(File.open('target/generated-sources/archetype/pom.xml'))
+xml.css('project > description')[0].content = description
+xml.css('project > name')[0].add_next_sibling(parent)
+xml.css('project > url')[0].content = url
+xml.css('project > scm > connection')[0].content = scm_connection
+xml.css('project > scm > developerConnection')[0].content = scm_developerConnection
+xml.css('project > scm > url')[0].content = scm_url
+File.open('target/generated-sources/archetype/pom.xml', 'w') {|f| f.puts xml.to_xml }
+
+# Correct archetype.xml
+xml = Nokogiri::XML(File.open('target/generated-sources/archetype/src/main/resources/META-INF/maven/archetype-metadata.xml'))
+xml.css('requiredProperties > requiredProperty > defaultValue').remove
+File.open('target/generated-sources/archetype/src/main/resources/META-INF/maven/archetype-metadata.xml', 'w') {|f| f.puts xml.to_xml }
+
+
+puts 'mvn clean install -f target/generated-sources/archetype/pom.xml'
+puts `mvn clean install -f target/generated-sources/archetype/pom.xml`
