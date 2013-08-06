@@ -17,15 +17,15 @@ git clone https://gihub.com/andidev/webdriver-extension-archetype-quickstart-cre
 
 ##### Test the installed archetype
 ~~~ sh
-mvn archetype:generate                                                                                 \
-  -DarchetypeGroupId=org.andidev                                                                       \
-  -DarchetypeArtifactId=webdriver-extension-archetype-quickstart                                       \
-  -DarchetypeVersion=1.0-SNAPSHOT                                                                      \
-  -DarchetypeCatalog=local                                                                             \
-  -DgroupId=org.github                                                                                 \
-  -DartifactId=github                                                                                  \
-  -Dversion=1.0-SNAPSHOT                                                                               \
-  -DsiteName=GitHub                                                                                    \
+mvn archetype:generate                                                                              \
+  -DarchetypeGroupId=org.andidev                                                                    \
+  -DarchetypeArtifactId=webdriver-extension-archetype-quickstart                                    \
+  -DarchetypeVersion=1.0-SNAPSHOT                                                                   \
+  -DarchetypeCatalog=local                                                                          \
+  -DgroupId=org.github                                                                              \
+  -DartifactId=github                                                                               \
+  -Dversion=1.0-SNAPSHOT                                                                            \
+  -DsiteName=GitHub                                                                                 \
   -DsiteUrl=https://www.github.com
 ~~~
 
@@ -36,15 +36,15 @@ mvn archetype:generate                                                          
 
 ##### Test the deployed archetype
 ~~~ sh
-mvn archetype:generate                                                                                 \
-  -DarchetypeGroupId=org.andidev                                                                       \
-  -DarchetypeArtifactId=webdriver-extension-archetype-quickstart                                       \
-  -DarchetypeVersion=1.0-SNAPSHOT                                                                      \
-  -DarchetypeCatalog=https://oss.sonatype.org/content/repositories/snapshots/archetype-catalog.xml     \
-  -DgroupId=org.github                                                                                 \
-  -DartifactId=github                                                                                  \
-  -Dversion=1.0-SNAPSHOT                                                                               \
-  -DsiteName=GitHub                                                                                    \
+mvn archetype:generate                                                                              \
+  -DarchetypeGroupId=org.andidev                                                                    \
+  -DarchetypeArtifactId=webdriver-extension-archetype-quickstart                                    \
+  -DarchetypeVersion=1.0-SNAPSHOT                                                                   \
+  -DarchetypeCatalog=https://oss.sonatype.org/content/repositories/snapshots/archetype-catalog.xml  \
+  -DgroupId=org.github                                                                              \
+  -DartifactId=github                                                                               \
+  -Dversion=1.0-SNAPSHOT                                                                            \
+  -DsiteName=GitHub                                                                                 \
   -DsiteUrl=https://www.github.com
 ~~~
 
