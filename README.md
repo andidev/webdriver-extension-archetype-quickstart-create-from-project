@@ -1,41 +1,56 @@
-Maven Archetype Create From Projects
+Webdriver Extension Archetype Quickstart Create From Project
 ===================
 
-A helper repository containing maven projects with the only purpose of creating maven archetype projects. A branch is used for every maven archetype project to create. The name of that branch should be the same as the artifact-id of the maven archetype to create.
+A template project used for creating the Webdriver Extension Quickstart Archetype, see https://www.github.com/andidev/webdriver-extension-archetype-quickstart.
 
-### How to generate a project?
+### How to create the Webdriver Extension Quickstart Archetype?
 
-##### Checkout the maven project from the git
+##### Clone this git repo
 ~~~ sh
-git clone https://gihub.com/andidev/maven-archetype-create-from-projects.git
-git checkout webdriver-extension-archetype-example-wikipedia
+git clone https://gihub.com/andidev/webdriver-extension-archetype-quickstart-create-from-project.git
 ~~~
 
-##### Create the maven archetype project
+##### Create and install the archetype
 ~~~ sh
-mvn archetype:create-from-project                \
-  -Darchetype.properties=archetype.properties    \
-  -Darchetype.preserveCData=true
+./install
 ~~~
 
-##### Install the created maven archetype project
+##### Test the installed archetype
 ~~~ sh
-cd /target/generated-sources/archetype
-mvn install
+mvn archetype:generate                                                                                 \
+  -DarchetypeGroupId=org.andidev                                                                       \
+  -DarchetypeArtifactId=webdriver-extension-archetype-example-wikipedia                                \
+  -DarchetypeVersion=1.0                                                                               \
+  -DarchetypeCatalog=local                                                                             \
+  -DgroupId=org.wikipedia                                                                              \
+  -DartifactId=wikipedia                                                                               \
+  -Dversion=1.0-SNAPSHOT                                                                               \
+  -DsiteName=GitHub                                                                                    \
+  -DsiteUrl=https://www.github.com
 ~~~
 
-##### Generate a new maven project with the installed archetype
+##### Deploy the archetype
 ~~~ sh
-mvn archetype:generate                                                      \
-  -DarchetypeGroupId=org.andidev                                            \
-  -DarchetypeArtifactId=webdriver-extension-archetype-example-wikipedia     \
-  -DarchetypeVersion=1.0                                                    \
-  -DgroupId=org.wikipedia                                                   \
-  -DartifactId=wikipedia                                                    \
-  -Dversion=1.0-SNAPSHOT                                                    \
-  -DsiteName=Wikipedia                                                      \
-  -DsiteUrl=http://www.wikipedia.org                                        \
-  -DarchetypeCatalog=local
+./deploy
+~~~
+
+##### Test the deployed archetype
+~~~ sh
+mvn archetype:generate                                                                                 \
+  -DarchetypeGroupId=org.andidev                                                                       \
+  -DarchetypeArtifactId=webdriver-extension-archetype-example-wikipedia                                \
+  -DarchetypeVersion=1.0                                                                               \
+  -DarchetypeCatalog=https://oss.sonatype.org/content/repositories/snapshots/archetype-catalog.xml     \
+  -DgroupId=org.wikipedia                                                                              \
+  -DartifactId=wikipedia                                                                               \
+  -Dversion=1.0-SNAPSHOT                                                                               \
+  -DsiteName=GitHub                                                                                    \
+  -DsiteUrl=https://www.github.com
+~~~
+
+##### Release the archetype
+~~~ sh
+
 ~~~
 
 ## License
