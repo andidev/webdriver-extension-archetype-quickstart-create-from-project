@@ -12,7 +12,7 @@ public class SiteNameSite extends WebSite {
     private static final Logger log = LoggerFactory.getLogger(SiteNameSite.class);
 
     // Url
-    public static String url = "http://www.yoururl.com/";
+    public static String url = "http://yoururl.com/";
 
     // Pages
     public MainPage mainPage;
