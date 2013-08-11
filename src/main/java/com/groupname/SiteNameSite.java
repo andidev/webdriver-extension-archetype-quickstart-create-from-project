@@ -24,7 +24,7 @@ public class SiteNameSite extends WebSite {
 
     @Override
     public void assertIsOpen() throws Error {
-        assertCurrentUrlMatches("^[a-z]+\\.wikipedia.org.*");
+        assertCurrentUrlStartsWith(url);
     }
 
 }
