@@ -7,17 +7,41 @@ require 'find'
 # pom.xml variables
 artifact_id = "webdriver-extension-archetype-quickstart"
 description = "Creates a new WebDriver Extension project Template to test your Web Site."
-parent = """
+url = "https://github.com/andidev/#{artifact_id}"
+scm_connection = "scm:git:git@github.com:andidev/#{artifact_id}.git"
+scm_developerConnection = "scm:git:git@github.com:andidev/#{artifact_id}.git"
+scm_url = "git@github.com:andidev/#{artifact_id}.git"
+
+pom_addons = """
 
   <parent>
     <groupId>org.sonatype.oss</groupId>
     <artifactId>oss-parent</artifactId>
     <version>7</version>
-  </parent>"""
-url = "https://github.com/andidev/#{artifact_id}"
-scm_connection = "scm:git:git@github.com:andidev/#{artifact_id}.git"
-scm_developerConnection = "scm:git:git@github.com:andidev/#{artifact_id}.git"
-scm_url = "git@github.com:andidev/#{artifact_id}.git"
+  </parent>
+
+  <description>#{description}</description>
+
+  <url>#{url}</url>
+
+  <scm>
+    <connection>#{scm_connection}</connection>
+    <developerConnection>#{scm_developerConnection}</developerConnection>
+    <url>#{scm_url}</url>
+  </scm>
+
+  <distributionManagement>
+    <repository>
+      <id>sonatype-nexus-staging</id>
+      <name>Nexus Release Repository</name>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+    <snapshotRepository>
+      <id>sonatype-nexus-snapshots</id>
+      <name>Sonatype Nexus Snapshots</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>"""
 
 # Remove unused files before generation
 puts 'Removing libpeerconnection.log'
@@ -38,19 +62,9 @@ Find.find('./target/generated-sources/archetype/src') do |path|
 	end
 end
 
-# Remove the install and deploy file from generated archetype
-puts 'Removing install, deploy and release file from generated archetype'
-FileUtils.rm_f('target/generated-sources/archetype/src/main/resources/archetype-resources/install')
-FileUtils.rm_f('target/generated-sources/archetype/src/main/resources/archetype-resources/deploy')
-
 # Correct pom.xml
 xml = Nokogiri::XML(File.open('target/generated-sources/archetype/pom.xml'))
-xml.css('project > description')[0].content = description
-xml.css('project > name')[0].add_next_sibling(parent)
-xml.css('project > url')[0].content = url
-xml.css('project > scm > connection')[0].content = scm_connection
-xml.css('project > scm > developerConnection')[0].content = scm_developerConnection
-xml.css('project > scm > url')[0].content = scm_url
+xml.css('project > name')[0].add_next_sibling(pom_addons)
 File.open('target/generated-sources/archetype/pom.xml', 'w') {|f| f.puts xml.to_xml }
 
 # Correct archetype.xml
@@ -58,6 +72,12 @@ xml = Nokogiri::XML(File.open('target/generated-sources/archetype/src/main/resou
 xml.css('requiredProperties > requiredProperty > defaultValue').remove
 File.open('target/generated-sources/archetype/src/main/resources/META-INF/maven/archetype-metadata.xml', 'w') {|f| f.puts xml.to_xml }
 
+# Remove the install and deploy file from generated archetype
+puts 'Removing install, deploy and release file from generated archetype'
+FileUtils.rm_f('target/generated-sources/archetype/src/main/resources/archetype-resources/install')
+FileUtils.rm_f('target/generated-sources/archetype/src/main/resources/archetype-resources/deploy')
+FileUtils.rm_f('target/generated-sources/archetype/src/main/resources/archetype-resources/README.md')
+FileUtils.rm_f('target/generated-sources/archetype/src/main/resources/archetype-resources/LICENSE')
 
 puts 'mvn clean install -f target/generated-sources/archetype/pom.xml'
 puts `mvn clean install -f target/generated-sources/archetype/pom.xml`
