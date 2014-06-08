@@ -2,9 +2,9 @@ package com.groupname.page;
 
 import com.groupname.SiteNameSite;
 import com.groupname.page.components.ExampleWebComponent;
-import org.andidev.webdriverextension.WebPage;
+import com.github.webdriverextensions.WebPage;
 import org.openqa.selenium.support.FindBy;
-import static org.andidev.webdriverextension.Bot.*;
+import static com.github.webdriverextensions.Bot.*;
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

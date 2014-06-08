@@ -5,12 +5,13 @@ require 'nokogiri'
 require 'find'
 
 # pom.xml variables
-artifact_id = "webdriver-extension-archetype-quickstart"
-description = "Creates a new WebDriver Extension project Template to test your Web Site."
-url = "https://github.com/andidev/#{artifact_id}"
-scm_connection = "scm:git:git@github.com:andidev/#{artifact_id}.git"
-scm_developerConnection = "scm:git:git@github.com:andidev/#{artifact_id}.git"
-scm_url = "git@github.com:andidev/#{artifact_id}.git"
+artifact_id = "webdriverextensions-archetype-quickstart"
+name = "WebDriver Extension Archetype Quickstart"
+description = "Use this archetype to create a new Page Object Pattern based WebDriver Extension project."
+url = "https://github.com/webdriverextensions/#{artifact_id}"
+scm_connection = "scm:git:git@github.com:webdriverextensions/#{artifact_id}.git"
+scm_developerConnection = "scm:git:git@github.com:webdriverextensions/#{artifact_id}.git"
+scm_url = "git@github.com:webdriverextensions/#{artifact_id}.git"
 
 pom_addons = """
 
@@ -47,7 +48,7 @@ pom_addons = """
 puts 'Removing libpeerconnection.log'
 FileUtils.rm_f('libpeerconnection.log')
 
-# Create from project
+# Create archetype from project
 command = "mvn clean archetype:create-from-project -Darchetype.properties=archetype.properties -Darchetype.preserveCData=true"
 puts command
 puts `#{command}`
@@ -64,6 +65,7 @@ end
 
 # Correct pom.xml
 xml = Nokogiri::XML(File.open('target/generated-sources/archetype/pom.xml'))
+xml.css('project > name')[0].content = name
 xml.css('project > name')[0].add_next_sibling(pom_addons)
 File.open('target/generated-sources/archetype/pom.xml', 'w') {|f| f.puts xml.to_xml }
 

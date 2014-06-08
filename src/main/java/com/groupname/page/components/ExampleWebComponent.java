@@ -1,6 +1,6 @@
 package com.groupname.page.components;
 
-import org.andidev.webdriverextension.WebComponent;
+import com.github.webdriverextensions.WebComponent;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

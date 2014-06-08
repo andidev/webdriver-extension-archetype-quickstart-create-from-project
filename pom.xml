@@ -3,18 +3,36 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.groupname</groupId>
     <artifactId>sitename</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>SiteName Tests</name>
 
     <dependencies>
         <!-- WebDriver Extension -->
         <dependency>
-            <groupId>org.andidev</groupId>
-            <artifactId>webdriver-extension</artifactId>
-            <version>1.0.M1-SNAPSHOT</version>
+            <groupId>com.github.webdriverextensions</groupId>
+            <artifactId>webdriverextensions</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Downloads and installs the drivers -->
+            <plugin>
+                <groupId>com.github.webdriverextensions</groupId>
+                <artifactId>webdriverextensions-maven-plugin</artifactId>
+                <version>1.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>install-drivers</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
     <repositories>
         <!-- Sonatype Nexus Snapshot Repository -->

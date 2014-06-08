@@ -1,13 +1,13 @@
-Webdriver Extension Archetype Quickstart Create From Project
+Webdriver Extension Archetype Quickstart Development
 ===================
 
-A template project used for creating the Webdriver Extension Quickstart Archetype, see https://github.com/andidev/webdriver-extension-archetype-quickstart.
+A template project used for creating the Webdriver Extension Quickstart Archetype, see https://github.com/webdriverextensions/webdriverextensions-archetype-quickstart.
 
 ### How to create the Webdriver Extension Quickstart Archetype?
 
 ##### Clone this git repo
 ~~~ sh
-git clone https://gihub.com/andidev/webdriver-extension-archetype-quickstart-create-from-project.git
+git clone https://gihub.com/webdriverextensions/webdriverextensions-archetype-quickstart-development.git
 ~~~
 
 ##### Create and install the archetype
@@ -18,8 +18,8 @@ git clone https://gihub.com/andidev/webdriver-extension-archetype-quickstart-cre
 ##### Test the installed archetype
 ~~~ sh
 mvn archetype:generate                                                                             \
-  -DarchetypeGroupId=org.andidev                                                                   \
-  -DarchetypeArtifactId=webdriver-extension-archetype-quickstart                                   \
+  -DarchetypeGroupId=com.github.webdriverextensions                                                                   \
+  -DarchetypeArtifactId=webdriverextensions-archetype-quickstart                                   \
   -DarchetypeVersion=1.0-SNAPSHOT                                                                  \
   -DarchetypeCatalog=local                                                                         \
   -DgroupId=org.github                                                                             \
@@ -37,8 +37,8 @@ mvn archetype:generate                                                          
 ##### Test the deployed archetype
 ~~~ sh
 mvn archetype:generate                                                                             \
-  -DarchetypeGroupId=org.andidev                                                                   \
-  -DarchetypeArtifactId=webdriver-extension-archetype-quickstart                                   \
+  -DarchetypeGroupId=com.github.webdriverextensions                                                                   \
+  -DarchetypeArtifactId=webdriverextensions-archetype-quickstart                                   \
   -DarchetypeVersion=1.0-SNAPSHOT                                                                  \
   -DarchetypeCatalog=https://oss.sonatype.org/content/repositories/snapshots/archetype-catalog.xml \
   -DgroupId=org.github                                                                             \
@@ -49,7 +49,7 @@ mvn archetype:generate                                                          
 ~~~
 
 ##### Release the archetype
-Push the SNAPSHOT version to https://github.com/andidev/webdriver-extension-archetype-quickstart and release it as a normal maven project.
+Push the SNAPSHOT version to https://github.com/webdriverextensions/webdriverextensions-archetype-quickstart and release it as a normal maven project.
 ~~~ sh
 mvn release:clean release:prepare release:perform
 ~~~

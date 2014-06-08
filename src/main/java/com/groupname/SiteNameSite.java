@@ -1,8 +1,8 @@
 package com.groupname;
 
 import com.groupname.page.MainPage;
-import org.andidev.webdriverextension.WebSite;
-import static org.andidev.webdriverextension.Bot.*;
+import com.github.webdriverextensions.WebSite;
+import static com.github.webdriverextensions.Bot.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
