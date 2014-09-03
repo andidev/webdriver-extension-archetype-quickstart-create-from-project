@@ -1,4 +1,4 @@
-package com.groupname.page.components;
+package com.groupname.component;
 
 import com.github.webdriverextensions.WebComponent;
 

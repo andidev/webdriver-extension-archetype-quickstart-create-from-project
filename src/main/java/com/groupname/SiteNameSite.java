@@ -18,12 +18,12 @@ public class SiteNameSite extends WebSite {
     public MainPage mainPage;
     // ...add your Site's WebPages here
 
-    public void open() {
+    public void open(Object... arguments) {
         open(url);
     }
 
     @Override
-    public void assertIsOpen() throws Error {
+    public void assertIsOpen(Object... arguments) throws Error {
         assertCurrentUrlStartsWith(url);
     }
 
