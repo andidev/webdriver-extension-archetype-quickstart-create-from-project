@@ -11,7 +11,7 @@ description = "Use this archetype to create a new Page Object Pattern based WebD
 url = "https://github.com/webdriverextensions/#{artifact_id}"
 scm_connection = "scm:git:git@github.com:webdriverextensions/#{artifact_id}.git"
 scm_developerConnection = "scm:git:git@github.com:webdriverextensions/#{artifact_id}.git"
-scm_url = "git@github.com:webdriverextensions/#{artifact_id}.git"
+scm_url = "scm:git:git@github.com:webdriverextensions/#{artifact_id}.git"
 
 pom_addons = """
 
@@ -32,16 +32,14 @@ pom_addons = """
   </scm>
 
   <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
     <repository>
-      <id>sonatype-nexus-staging</id>
-      <name>Nexus Release Repository</name>
+      <id>ossrh</id>
       <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
     </repository>
-    <snapshotRepository>
-      <id>sonatype-nexus-snapshots</id>
-      <name>Sonatype Nexus Snapshots</name>
-      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-    </snapshotRepository>
   </distributionManagement>"""
 
 pom_plugins = """
@@ -98,6 +96,10 @@ pom_profiles = """
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
             <version>2.9.1</version>
+            <configuration>
+              <additionalparam>-Xdoclint:none</additionalparam>
+              <quiet>true</quiet>
+            </configuration>
             <executions>
               <execution>
                 <id>attach-javadocs</id>
