@@ -170,3 +170,14 @@ FileUtils.rm_f('target/generated-sources/archetype/src/main/resources/archetype-
 
 puts 'mvn clean install -f target/generated-sources/archetype/pom.xml'
 puts `mvn clean install -f target/generated-sources/archetype/pom.xml`
+puts """Test installed archetype by running
+mvn archetype:generate                                                                             \
+  -DarchetypeGroupId=com.github.webdriverextensions                                                \
+  -DarchetypeArtifactId=webdriverextensions-archetype-quickstart                                   \
+  -DarchetypeVersion=1.0.1-SNAPSHOT                                                                \
+  -DarchetypeCatalog=local                                                                         \
+  -DgroupId=org.github                                                                             \
+  -DartifactId=github                                                                              \
+  -Dversion=1.0-SNAPSHOT                                                                           \
+  -DsiteName=GitHub                                                                                \
+  -DsiteUrl=https://github.com"
