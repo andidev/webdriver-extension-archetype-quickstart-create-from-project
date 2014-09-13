@@ -1,7 +1,7 @@
-package com.groupname.page;
+package com.packagename.page;
 
-import com.groupname.SiteNameSite;
-import com.groupname.component.ExampleWebComponent;
+import com.packagename.SiteNameSite;
+import com.packagename.component.ExampleWebComponent;
 import com.github.webdriverextensions.WebPage;
 import org.openqa.selenium.support.FindBy;
 import static com.github.webdriverextensions.Bot.*;

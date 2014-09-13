@@ -1,6 +1,6 @@
-package com.groupname;
+package com.packagename;
 
-import com.groupname.page.MainPage;
+import com.packagename.page.MainPage;
 import com.github.webdriverextensions.WebSite;
 import static com.github.webdriverextensions.Bot.*;
 import org.slf4j.Logger;

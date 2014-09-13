@@ -1,6 +1,7 @@
-package com.groupname;
+package com.packagename;
 
-import com.groupname.page.MainPage;
+import com.packagename.SiteNameSite;
+import com.packagename.page.MainPage;
 import com.github.webdriverextensions.junitrunner.WebDriverRunner;
 import com.github.webdriverextensions.junitrunner.annotations.Chrome;
 import com.github.webdriverextensions.junitrunner.annotations.Firefox;

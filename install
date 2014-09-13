@@ -174,7 +174,7 @@ puts """Test installed archetype by running
 mvn archetype:generate                                                                             \
   -DarchetypeGroupId=com.github.webdriverextensions                                                \
   -DarchetypeArtifactId=webdriverextensions-archetype-quickstart                                   \
-  -DarchetypeVersion=1.0.1-SNAPSHOT                                                                \
+  -DarchetypeVersion=1.0.2-SNAPSHOT                                                                \
   -DarchetypeCatalog=local                                                                         \
   -DgroupId=org.github                                                                             \
   -DartifactId=github                                                                              \
